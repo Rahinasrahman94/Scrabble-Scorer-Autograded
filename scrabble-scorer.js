@@ -69,7 +69,9 @@ let vowelBonusScorer=function(word){
    return vowelBonusscore;
 };
 
+
 let scrabbleScorer = function(word){
+
    let points = 0;
    word = word.toLowerCase();
    for(let i=0;i<word.length;i++)
@@ -84,20 +86,20 @@ let scrabbleScorer = function(word){
 
 const scoringAlgorithms = [
    {
-     name:"SimpleScore",
-      description:"Each letter is worth 1 point",
-      scorerFunction : simpleScorer
+       name:"SimpleScore",
+       description:"Each letter is worth 1 point",
+       scorerFunction : simpleScorer
    
    },
    {
-      name : "BonusVowels",
-      description:"Vowels are 3 pts, consonants are 1 pt.",
-      scorerFunction: vowelBonusScorer
+       name : "BonusVowels",
+       description:"Vowels are 3 pts, consonants are 1 pt.",
+       scorerFunction: vowelBonusScorer
    },
    {
-      name:"Scrabble",
-      description:"The traditional scoring algorithm..",
-      scorerFunction : scrabbleScorer
+       name:"Scrabble",
+       description:"The traditional scoring algorithm..",
+       scorerFunction : scrabbleScorer
      }
   
 
@@ -107,7 +109,7 @@ function scorerPrompt() {
 
    console.log("0 - Simple: One point per character");
    console.log("1 - Vowel Bonus: Vowels are worth 3 points");
-   console.log( "2 - Scrabble: Uses scrabble point system");
+   console.log("2 - Scrabble: Uses scrabble point system");
    let algorithmNumber = input.question("Enter 0 or 1 or 2");
   // return scoringAlgorithms[algorithmNumber].name,scoringAlgorithms[algorithmNumber].scoringFunction(word);
 return scoringAlgorithms[algorithmNumber].scorerFunction(word);
