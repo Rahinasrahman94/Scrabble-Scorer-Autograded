@@ -76,11 +76,8 @@ let scrabbleScorer = function(word){
    word = word.toLowerCase();
    for(let i=0;i<word.length;i++)
    {
-         points += newPointStructure[word[i]]
-         
-         
+         points += newPointStructure[word[i]];     
    }
-  // console.log(points)
   return points;
 };
 
@@ -115,39 +112,21 @@ function scorerPrompt() {
 return scoringAlgorithms[algorithmNumber].scorerFunction(word);
 }
 
-function transform(object) {
-   let objectEntries = Object.entries(object);
-   const finalObject = objectEntries.map(
-      ([prop, propValue]) => { return [propValue, prop]; }
-   );
-   let newObject = Object.fromEntries(finalObject); 
-      let keys = Object.keys(newObject);
-      for(var i = 0; i < keys.length; ++i) {
-          var key = keys[i],
-              subkeys = key.split(/,\s?/),
-              target = newObject[key];
-           delete newObject[key];
-          subkeys.forEach(function(key) { newObject[key] = target;})
-}
-Object.keys(newObject).forEach(function(el){
-   newObject[el] = parseInt(newObject[el])
- })
-   var ke = Object.keys(newObject);
-   var n = ke.length;
-   while (n--) {
-     var k = ke[n]; // "cache" it, for less lookups to the array
-     if (k !== k.toLowerCase()) { // might already be in its lower case version
-      newObject[k.toLowerCase()] = newObject[k] // swap the value to a new lower case key
-         delete newObject[k] // delete the old key
-     }
-  // return (newObject);
- }
-
- //console.log(newObject)
-// console.log(newobj);
- return newObject;
-}
+function transform(exampleObj) 
+   {
  
+      let SplittedObj = {};
+      let myArray = [];
+      for(let item in exampleObj)
+           {
+             myArray = exampleObj[item];
+              for(let i=0;i<myArray.length;i++)
+                 {
+                   SplittedObj[myArray[i].toLowerCase()] = parseInt(item);
+                   }
+           }
+        return SplittedObj;
+     }
 
 
 function runProgram() {
@@ -157,8 +136,6 @@ function runProgram() {
    
 }
 
-// Don't write any code below this line //
-// And don't change these or your program will not run as expected //
 module.exports = {
    initialPrompt: initialPrompt,
    transform: transform,
