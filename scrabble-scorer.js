@@ -112,20 +112,19 @@ function scorerPrompt() {
 return scoringAlgorithms[algorithmNumber].scorerFunction(word);
 }
 
-function transform(exampleObj) 
+function transform(Object) 
    {
- 
-      let SplittedObj = {};
-      let myArray = [];
-      for(let item in exampleObj)
+      let splittedObj = {};
+      let splitChar = [];
+      for(let item in Object)
            {
-             myArray = exampleObj[item];
-              for(let i=0;i<myArray.length;i++)
+            splitChar = Object[item];
+              for(let i=0;i<splitChar.length;i++)
                  {
-                   SplittedObj[myArray[i].toLowerCase()] = parseInt(item);
+                   splittedObj[splitChar[i].toLowerCase()] = parseInt(item);
                    }
            }
-        return SplittedObj;
+        return splittedObj;
      }
 
 
